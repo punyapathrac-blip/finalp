@@ -44,7 +44,7 @@ export default function Process({ onBack }: ProcessProps) {
                 {['ตูน.png', 'ตูน2.png', 'ตูน3.png', 'ตูน4.png'].map((img, i) => (
                   <div key={i} className="aspect-square bg-gray-50 rounded-xl overflow-hidden border-2 border-brand-yellow/20 shadow-sm p-2 flex items-center justify-center">
                     <img 
-                      src={`/sketch/${img}`} 
+                      src={`sketch/${img}`} 
                       alt={`Sketch ${i + 1}`} 
                       className="max-w-full max-h-full object-contain"
                       referrerPolicy="no-referrer"
