@@ -42,11 +42,11 @@ export default function Process({ onBack }: ProcessProps) {
               </h3>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
                 {['ตูน.png', 'ตูน2.png', 'ตูน3.png', 'ตูน4.png'].map((img, i) => (
-                  <div key={i} className="aspect-square bg-gray-50 rounded-xl overflow-hidden border-2 border-brand-yellow/20 shadow-sm p-2 flex items-center justify-center">
+                  <div key={i} className="aspect-square bg-gray-50 rounded-xl overflow-hidden border-2 border-brand-yellow/20 shadow-sm">
                     <img 
-                      src={`sketch/${img}`} 
+                      src={`/sketch/${img}`} 
                       alt={`Sketch ${i + 1}`} 
-                      className="max-w-full max-h-full object-contain"
+                      className="w-full h-full object-cover"
                       referrerPolicy="no-referrer"
                     />
                   </div>
@@ -63,9 +63,8 @@ export default function Process({ onBack }: ProcessProps) {
                       <img 
                         src={char.image} 
                         alt={char.name} 
-                        className={`w-full h-full object-contain ${
-                          char.id === 'Kappi' ? 'scale-150' : 'scale-110'
-                        }`} 
+                        className="w-full h-full object-contain" 
+                        style={{ transform: `scale(${char.scale || 1})` }}
                       />
                     </div>
                     <span className="text-[10px] font-bold uppercase text-gray-500">{char.name}</span>

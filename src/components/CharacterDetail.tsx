@@ -28,18 +28,21 @@ export default function CharacterDetail({ character, onBack }: CharacterDetailPr
             className="p-8 md:p-12 flex flex-col md:flex-row items-center gap-12"
             style={{ backgroundColor: character.color }}
           >
-            <div className="w-full md:w-1/2 flex justify-center">
-              <motion.img 
+            <div className="w-full md:w-1/2">
+              <motion.div 
                 initial={{ x: -50, opacity: 0 }}
                 animate={{ x: 0, opacity: 1 }}
                 transition={{ delay: 0.2 }}
-                src={character.image} 
-                alt={character.name}
-                referrerPolicy="no-referrer"
-                className={`max-w-full max-h-[400px] object-contain drop-shadow-2xl ${
-                  character.id === 'Kappi' ? 'scale-150' : 'scale-110'
-                }`}
-              />
+                className="w-full h-full flex items-center justify-center"
+                style={{ transform: `scale(${character.scale || 1})` }}
+              >
+                <img 
+                  src={character.image} 
+                  alt={character.name}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-auto drop-shadow-2xl"
+                />
+              </motion.div>
             </div>
             <div className="w-full md:w-1/2 text-white">
               <motion.div

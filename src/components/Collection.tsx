@@ -19,7 +19,7 @@ export default function Collection({ onSelectCharacter, onGoToProcess }: Collect
           COLLECTION
         </h2>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
           {CHARACTERS.map((char, index) => (
             <motion.div
               key={char.id}
@@ -28,27 +28,48 @@ export default function Collection({ onSelectCharacter, onGoToProcess }: Collect
               transition={{ delay: index * 0.1 }}
               whileHover={{ y: -10 }}
               onClick={() => onSelectCharacter(char)}
-              className="cursor-pointer group"
+              className="cursor-pointer group flex flex-col items-center"
             >
               <div 
-                className="aspect-square rounded-[2.5rem] flex items-center justify-center p-6 transition-all shadow-md group-hover:shadow-xl border-8"
+                className="w-full aspect-[4/5] rounded-[2.5rem] flex items-center justify-center p-8 transition-all shadow-lg group-hover:shadow-2xl relative overflow-hidden border-8"
                 style={{ 
-                  backgroundColor: char.color + '11',
+                  backgroundColor: char.color + '10',
                   borderColor: char.color
                 }}
               >
+                {/* Decorative background element */}
+                <div 
+                  className="absolute inset-0 opacity-10 group-hover:scale-125 transition-transform duration-700"
+                  style={{ 
+                    background: `radial-gradient(circle at center, ${char.color}, transparent 80%)` 
+                  }}
+                />
+                
+                {/* Corner Accents */}
+                <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 opacity-50" style={{ borderColor: char.color }} />
+                <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 opacity-50" style={{ borderColor: char.color }} />
+                <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 opacity-50" style={{ borderColor: char.color }} />
+                <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 opacity-50" style={{ borderColor: char.color }} />
+                
                 <img 
                   src={char.image} 
                   alt={char.name}
                   referrerPolicy="no-referrer"
-                  className={`w-full h-full object-contain drop-shadow-2xl transition-transform ${
-                    char.id === 'Kappi' ? 'scale-150' : 'scale-110'
-                  }`}
+                  className={`w-full h-full object-contain drop-shadow-2xl relative z-10 transform group-hover:scale-110 transition-transform duration-300 ${char.id === 'Kappi' ? 'scale-150' : ''}`}
                 />
               </div>
-              <h3 className="mt-4 font-display font-bold text-xl text-brand-brown">
-                {char.name}
-              </h3>
+              <div className="mt-6 text-center">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-50 mb-1 block" style={{ color: char.color }}>
+                  {char.flavor} Spirit
+                </span>
+                <h3 className="font-display font-black text-2xl text-brand-brown uppercase tracking-tight">
+                  {char.name}
+                </h3>
+                <div 
+                  className="h-1.5 w-8 mx-auto mt-2 rounded-full transition-all group-hover:w-16"
+                  style={{ backgroundColor: char.color }}
+                />
+              </div>
             </motion.div>
           ))}
         </div>

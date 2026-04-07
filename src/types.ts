@@ -8,6 +8,7 @@ export interface Character {
   bgColor: string;
   lore: string;
   image: string;
+  scale?: number;
 }
 
 export type Page = 'home' | 'collection' | 'about' | 'contact' | 'process';
